@@ -1,9 +1,26 @@
 import http from 'http';
 import url from 'url';
 
-let server = http.createServer(function(req, res) {
 
-  let parsedUrl = url.parse(req.url, true);
+
+
+
+
+
+  let server = http.createServer((request, res) => {
+
+    if (parsedUrl.path === '/') {
+      res.write('<p> On the Root Page </p>')
+    }
+
+    else if {
+      res.write("<p> Not on the Root Page </p>")
+      res.end();
+      console.log(res);
+    }
+
+  };
+
 
   /**
    * Let's create a simple webserver that returns a different
