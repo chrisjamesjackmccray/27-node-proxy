@@ -8,6 +8,10 @@ let server = http.createServer(function(req, res) {
 
     let parsedUrl = url.parse(req.url, true);
 
+    parsedUrl.query.APPID = "217fc613b54bb73f0ee5839a1f692654";
+    parsedUrl.search = null;
+    req.url = url.format(parsedUrl);
+
     /**
      * We want to proxy our requests to Open Weather Map's API,
      * but we need to add our API key as a querystring parameter.
@@ -28,8 +32,8 @@ let server = http.createServer(function(req, res) {
      *    Astronomy Picture of the Day.
      */
 
-    proxy.web(req, res, {
-        target: 'http://api.openweathermap.org'
+    proxy.web(req, res, { target:
+      'http://api.openweathermap.org'
     });
 
 });

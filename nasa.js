@@ -1,4 +1,6 @@
 import http from 'http';
+import https from 'https';
+import httpProxy from 'http-proxy';
 import url from 'url';
 
 let proxy = httpProxy.createProxyServer({});
@@ -6,6 +8,10 @@ let proxy = httpProxy.createProxyServer({});
 let server = http.createServer(function(req, res) {
 
   let parsedUrl = url.parse(req.url, true);
+
+  parsedUrl.query.api_key = '5ytTsAonLjjCCgdEOXRygCBHloq2wyQPr8xrIRIZ';
+  parsedUrl.search = null;
+  req.url = url.format(parsedUrl);
 
   /**
    * We want to proxy our requests to NASA's API,
